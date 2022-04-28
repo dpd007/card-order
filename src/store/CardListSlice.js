@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-const initialState = [
+const initialCardState = [
   {
     id: 1,
     name: "food card",
@@ -44,11 +44,16 @@ const initialState = [
 ];
 const CardListSlice = createSlice({
   name: "cardList",
-  initialState: initialState,
-  reducer: {
-    add(state) {
-      state.addToCartCount++;
-      state.addToCart = true;
+  initialState: initialCardState,
+  reducers: {
+    add(state, action) {
+      let itemId = action.payload;
+      state.forEach((item) => {
+        if (item.id === itemId) {
+          item.addToCart = true;
+          item.addToCartCount++;
+        }
+      });
     },
     remove(state) {
       if (state.addToCart === true && state.addToCartCount > 0) {

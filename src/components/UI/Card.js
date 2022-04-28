@@ -1,8 +1,10 @@
 import React from "react";
+import Buttons from "./Buttons";
 import "./Card.css";
-// import { useState } from "react";
-const Card = ({ cardList }) => {
-  // const [isAdded, setIsAdded] = useState([]);
+const Card = ({ cardList, onAdd }) => {
+  const onAddCart = (id) => {
+    onAdd(id);
+  };
   return (
     <div className="row">
       {cardList.map((item) => {
@@ -30,9 +32,19 @@ const Card = ({ cardList }) => {
                 </div>
                 <div className="description text-muted">{item.description}</div>
               </div>
-              <div className="card__footer">
-                <button>Add to Cart</button>
-              </div>
+              {item.addToCartCount === 0 && item.addToCart === false ? (
+                <div className="card__footer">
+                  <button onClick={() => onAddCart(item.id)}>
+                    Add to Cart
+                  </button>
+                </div>
+              ) : (
+                <Buttons
+                  count={item.addToCartCount}
+                  onAddCart={onAddCart}
+                  id={item.id}
+                />
+              )}
             </div>
           </React.Fragment>
         );

@@ -1,11 +1,18 @@
 import Navbar from "./components/Navbar";
 import Card from "./components/UI/Card";
-import { useDuspatch, useSelector } from "react-redux";
-import { cardListActions } from "./store/CardListSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { cardListActions as actions } from "./store/CardListSlice";
 import StarIcon from "./images/star.png";
 
 function App() {
   const cardList = useSelector((state) => state.cardList);
+  const dispatch = useDispatch();
+  const handleAddToCard = (id) => {
+    dispatch(actions.add(id));
+  };
+  const handleRemoveToCard = (id) => {
+    dispatch(actions.remove(id));
+  };
   return (
     <div className="App">
       <div className="container">
@@ -21,7 +28,7 @@ function App() {
             <img src={StarIcon} alt="" />
           </span>
         </div>
-        <Card cardList={cardList} />
+        <Card cardList={cardList} onAdd={handleAddToCard} />
       </div>
     </div>
   );

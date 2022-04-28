@@ -1,3 +1,13 @@
 .buttons {
   display: flex;
+  width: 18rem;
+  justify-content: space-between;
+}
+.show__count {
+  border: 1px solid #65a4d3;
+  width: inherit;
+}
+.decrement__btn,
+.increment__btn {
+  padding: 0 10% 0 10%;
 }
