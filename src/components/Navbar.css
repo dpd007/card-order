@@ -1,0 +1,15 @@
+.navbar-brand {
+  display: flex;
+}
+.brand__logo img {
+  width: 80%;
+}
+.brand__text {
+  color: #65a4d3;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.form-inline img {
+  width: 15%;
+  margin: 0 5% 0 5%;
+}
