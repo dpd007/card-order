@@ -10,10 +10,13 @@ tbody tr td {
 .summary__table tbody tr td {
   text-transform: capitalize;
 }
-h5 {
+.summary__table h5 {
   text-decoration: none;
   color: #65a4d3;
 }
 #plus__icon {
   width: 4%;
+}
+.details__container {
+  background-color: #ecf2f4;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "./UI/Card";
 import StarIcon from "../images/star.png";
-const Home = ({ cardList, addProduct }) => {
+const Home = ({ cardList, addProduct, removeProduct }) => {
   return (
     <React.Fragment>
       <h2 className="text-center py-4" style={{ textTransform: "capitalize" }}>
@@ -12,7 +12,7 @@ const Home = ({ cardList, addProduct }) => {
           <img src={StarIcon} alt="" />
         </span>
       </div>
-      <Card cardList={cardList} onAdd={addProduct} />
+      <Card cardList={cardList} onAdd={addProduct} onRemove={removeProduct} />
     </React.Fragment>
   );
 };

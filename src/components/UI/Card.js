@@ -1,16 +1,19 @@
 import React from "react";
 import Buttons from "./Buttons";
 import "./Card.css";
-const Card = ({ cardList, onAdd }) => {
+const Card = ({ cardList, onAdd, onRemove }) => {
   const onAddCart = (id) => {
     onAdd(id);
+  };
+  const removeFromCart = (id) => {
+    onRemove(id);
   };
   return (
     <div className="row">
       {cardList.map((item) => {
         return (
           <React.Fragment key={item.id}>
-            <div className="col-md-4 py-3">
+            <div className="col-md-4 col-sm-12 col-xs-12 py-3">
               <div className="card" style={{ width: "18rem" }}>
                 <img className="card-img-top" src={item.img_url} alt="" />
               </div>
@@ -32,7 +35,7 @@ const Card = ({ cardList, onAdd }) => {
                 </div>
                 <div className="description text-muted">{item.description}</div>
               </div>
-              {item.addToCartCount === 0 && item.addToCart === false ? (
+              {item.quantity === 0 && item.addToCart === false ? (
                 <div className="card__footer">
                   <button onClick={() => onAddCart(item.id)}>
                     Add to Cart
@@ -40,9 +43,10 @@ const Card = ({ cardList, onAdd }) => {
                 </div>
               ) : (
                 <Buttons
-                  count={item.addToCartCount}
+                  count={item.quantity}
                   onAddCart={onAddCart}
                   id={item.id}
+                  onRemoveFromCart={removeFromCart}
                 />
               )}
             </div>

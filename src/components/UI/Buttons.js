@@ -1,9 +1,12 @@
 import "./Buttons.css";
-const Buttons = ({ onAddCart, id, count, str }) => {
+const Buttons = ({ onAddCart, id, count, str, onRemoveFromCart }) => {
   return (
     <div className={str === "summary" ? `summary__buttons` : `buttons`}>
       <button
-        className={str === "summary" ? `summary__decrement__btn` : `decrement__btn`}
+        className={
+          str === "summary" ? `summary__decrement__btn` : `decrement__btn`
+        }
+        onClick={() => onRemoveFromCart(id)}
       >
         -
       </button>
@@ -13,7 +16,9 @@ const Buttons = ({ onAddCart, id, count, str }) => {
         {count}
       </button>
       <button
-        className={str === "summary" ? `summary__increment__btn` : `increment__btn`}
+        className={
+          str === "summary" ? `summary__increment__btn` : `increment__btn`
+        }
         onClick={() => onAddCart(id)}
       >
         +

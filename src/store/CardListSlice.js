@@ -9,7 +9,7 @@ const initialCardState = [
     img_url:
       "https://react-coding-assignment.s3.ap-south-1.amazonaws.com/cards/orange_card.png",
     addToCart: false,
-    addToCartCount: 0,
+    quantity: 0,
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const initialCardState = [
     img_url:
       "https://react-coding-assignment.s3.ap-south-1.amazonaws.com/cards/blue_card.png",
     addToCart: false,
-    addToCartCount: 0,
+    quantity: 0,
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const initialCardState = [
     img_url:
       "https://react-coding-assignment.s3.ap-south-1.amazonaws.com/cards/golden_card.png",
     addToCart: false,
-    addToCartCount: 0,
+    quantity: 0,
   },
   {
     id: 4,
@@ -39,7 +39,7 @@ const initialCardState = [
     img_url:
       "https://react-coding-assignment.s3.ap-south-1.amazonaws.com/cards/black_card.png",
     addToCart: false,
-    addToCartCount: 0,
+    quantity: 0,
   },
 ];
 const CardListSlice = createSlice({
@@ -51,14 +51,22 @@ const CardListSlice = createSlice({
       state.forEach((item) => {
         if (item.id === itemId) {
           item.addToCart = true;
-          item.addToCartCount++;
+          item.quantity++;
         }
       });
     },
-    remove(state) {
-      if (state.addToCart === true && state.addToCartCount > 0) {
-        state.addToCartCount--;
-      }
+    remove(state, action) {
+      let itemId = action.payload;
+      state.forEach((item) => {
+        if (item.id === itemId) {
+          if (item.addToCart === true && item.quantity > 0) {
+            item.quantity--;
+            if (item.quantity === 0) {
+              item.addToCart = false;
+            }
+          }
+        }
+      });
     },
   },
 });

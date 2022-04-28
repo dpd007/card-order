@@ -2,7 +2,10 @@ import Buttons from "./UI/Buttons";
 import { Link } from "react-router-dom";
 import React from "react";
 import PlusIcon from "../images/plus.png";
-const SummaryItems = ({ cardList, onAddCart }) => {
+const SummaryItems = ({ addedCardList, onAddCart, onRemoveFromCart }) => {
+  if (addedCardList.length === 0) {
+    return <label>Nothing to show</label>;
+  }
   return (
     <React.Fragment>
       <table className="table table-responsive summary__table">
@@ -14,17 +17,18 @@ const SummaryItems = ({ cardList, onAddCart }) => {
           </tr>
         </thead>
         <tbody>
-          {cardList.map((item) => {
+          {addedCardList.map((item) => {
             return (
-              <tr>
+              <tr key={item.id}>
                 <td>{item.id}.</td>
                 <td>{item.name}</td>
                 <td>
                   {
                     <Buttons
-                      count={item.addToCartCount}
+                      count={item.quantity}
                       onAddCart={onAddCart}
                       id={item.id}
+                      onRemoveFromCart={onRemoveFromCart}
                       str="summary"
                     />
                   }

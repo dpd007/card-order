@@ -9,7 +9,10 @@
 }
 .decrement__btn,
 .increment__btn {
+  border: none;
   padding: 0 10% 0 10%;
+  background: #65a4d3;
+  color: #fff;
 }
 .summary__buttons {
   width: inherit;

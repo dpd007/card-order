@@ -11,7 +11,7 @@ function App() {
   const handleAddToCard = (id) => {
     dispatch(actions.add(id));
   };
-  const handleRemoveToCard = (id) => {
+  const handleRemoveFromCard = (id) => {
     dispatch(actions.remove(id));
   };
   let count = 0;
@@ -27,15 +27,21 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Home cardList={cardList} addProduct={handleAddToCard} />}
+            element={
+              <Home
+                cardList={cardList}
+                addProduct={handleAddToCard}
+                removeProduct={handleRemoveFromCard}
+              />
+            }
           />
           <Route
             path="/order-summary"
             element={
               <Summary
-                cardList={cardList}
                 orderAdded={count}
                 addProduct={handleAddToCard}
+                removeProduct={handleRemoveFromCard}
               />
             }
           />

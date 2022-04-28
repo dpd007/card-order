@@ -4,10 +4,16 @@ import "./Summary.css";
 import { Link } from "react-router-dom";
 import SummaryItems from "./SummaryItems";
 import PriceDetails from "./PriceDetails";
-const Summary = ({ cardList, orderAdded, addProduct }) => {
+import { useSelector } from "react-redux";
+const Summary = ({ orderAdded, addProduct, removeProduct }) => {
   const onAddCart = (id) => {
     addProduct(id);
   };
+  const removeFromCart = (id) => {
+    removeProduct(id);
+  };
+  const cardList = useSelector((state) => state.cardList);
+  const addedItems = cardList.filter((item) => item.quantity > 0);
   return (
     <div className="container">
       <div className="summary__header py-4">
@@ -17,11 +23,15 @@ const Summary = ({ cardList, orderAdded, addProduct }) => {
         <label className="ml-3">Back to Home</label>
         <h4>Order Summary ({`${orderAdded} items`})</h4>
         <div className="row py-4">
-          <div className="col-md-6 card">
-            <SummaryItems cardList={cardList} onAddCart={onAddCart} />
+          <div className="col-md-6 col-sm-12 col-xs-12 card">
+            <SummaryItems
+              addedCardList={addedItems}
+              onAddCart={onAddCart}
+              onRemoveFromCart={removeFromCart}
+            />
           </div>
-          <div className="col-md-5 card ml-3">
-            <PriceDetails />
+          <div className="col-md-5 col-sm-12 col-xs-12 card ml-3 details__container">
+            <PriceDetails addedCardList={addedItems} />
           </div>
         </div>
       </div>
