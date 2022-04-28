@@ -2,7 +2,8 @@ import MainLogo from "../images/blue_logo.svg";
 import ProfileIcon from "../images/profile.png";
 import CartIcon from "../images/cart.png";
 import "./Navbar.css";
-const Navbar = () => {
+import { Link } from "react-router-dom";
+const Navbar = ({ orderAdded }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <a className="navbar-brand" href="true">
@@ -25,8 +26,11 @@ const Navbar = () => {
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto"></ul>
-        <form className="form-inline my-2 my-lg-0">
-          <img src={CartIcon} className="cart__icon img-fluid" alt="" />
+        <form className="form-inline my-2 my-lg-0 cart__container">
+          <Link to="order-summary" className="">
+            <img src={CartIcon} className="cart__icon img-fluid" alt="" />
+            <span className="badge badge-light">{orderAdded}</span>
+          </Link>
           <img src={ProfileIcon} className="profile__icon img-fluid" alt="" />
         </form>
       </div>

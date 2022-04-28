@@ -9,11 +9,20 @@
   font-size: 1.3rem;
   font-weight: 600;
 }
-.form-inline img {
+.cart__container {
+  display: flex;
+  width: 20%;
+}
+.cart__icon {
+  width: 30%;
+}
+.cart__icon a {
+  width: 50%;
+}
+.profile__icon {
   width: 15%;
   margin: 0 5% 0 5%;
   border: none;
-  background: #65a4d3;
   color: #fff;
   font-size: 1.5rem;
 }

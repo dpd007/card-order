@@ -11,3 +11,29 @@
 .increment__btn {
   padding: 0 10% 0 10%;
 }
+.summary__buttons {
+  width: inherit;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.summary__decrement__btn,
+.summary__increment__btn {
+  border: none;
+  background: #4e5666;
+  color: #fff;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+.summary__show__count {
+  width: 3rem;
+  background: transparent;
+  border: none;
+}
+.summary__decrement__btn {
+  padding-left: 10%;
+}
+.summary__increment__btn {
+  padding-right: 10%;
+}

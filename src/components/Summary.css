@@ -1,0 +1,19 @@
+.summary__header img {
+  width: 2%;
+}
+.summary__table {
+  display: inline-table;
+}
+tbody tr td {
+  border-bottom: none;
+}
+.summary__table tbody tr td {
+  text-transform: capitalize;
+}
+h5 {
+  text-decoration: none;
+  color: #65a4d3;
+}
+#plus__icon {
+  width: 4%;
+}

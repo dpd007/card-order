@@ -1,8 +1,9 @@
 import Navbar from "./components/Navbar";
-import Card from "./components/UI/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { cardListActions as actions } from "./store/CardListSlice";
-import StarIcon from "./images/star.png";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import Summary from "./components/Summary";
 
 function App() {
   const cardList = useSelector((state) => state.cardList);
@@ -13,22 +14,32 @@ function App() {
   const handleRemoveToCard = (id) => {
     dispatch(actions.remove(id));
   };
+  let count = 0;
+  cardList.forEach((item) => {
+    if (item.addToCart) {
+      count++;
+    }
+  });
   return (
     <div className="App">
       <div className="container">
-        <Navbar />
-        <h2
-          className="text-center py-4"
-          style={{ textTransform: "capitalize" }}
-        >
-          most popular
-        </h2>
-        <div className="star__container container">
-          <span>
-            <img src={StarIcon} alt="" />
-          </span>
-        </div>
-        <Card cardList={cardList} onAdd={handleAddToCard} />
+        <Navbar orderAdded={count} />
+        <Routes>
+          <Route
+            path="/"
+            element={<Home cardList={cardList} addProduct={handleAddToCard} />}
+          />
+          <Route
+            path="/order-summary"
+            element={
+              <Summary
+                cardList={cardList}
+                orderAdded={count}
+                addProduct={handleAddToCard}
+              />
+            }
+          />
+        </Routes>
       </div>
     </div>
   );
