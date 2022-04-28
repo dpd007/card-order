@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap");
+.card {
+  font-family: "Raleway Sans", sans-serif;
+  width: 25rem;
+  height: 15rem;
+  cursor: pointer;
+  color: #fff;
+}
+.card__inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: inherit;
+}
+.front {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(45deg, #3163ae, #1a75a6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 5%;
+  border-radius: inherit;
+}
+.front p {
+  font-size: 1.5rem;
+}
+.front img {
+  width: 13%;
+}
+#wifi__logo {
+  transform: rotate(90deg);
+  width: 10%;
+}
+.card__footer p {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #fff;
+  line-height: 0.1em;
+  margin: 10px 0 20px;
+  padding-left: 50%;
+}
+.card__footer p > span {
+  background: #3163ae;
+  padding: 0 10px;
+  text-transform: capitalize;
+  font-size:1.1rem
+}
