@@ -14,3 +14,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.star__container {
+  border-bottom: 1px solid #65a4d3;
+  text-align: center;
+  line-height: 0.1em;
+  margin: 10px 0 20px;
+}
+.star__container span {
+  background: #fff;
+  padding: 0 3% 3% 3%;
+}
+.star__container > span > img {
+  width: 3%;
+}

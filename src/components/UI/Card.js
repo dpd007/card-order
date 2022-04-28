@@ -1,29 +1,43 @@
 import React from "react";
 import "./Card.css";
-import Chip from "../../images/chip.png";
-import WifiLogo from "../../images/wifi.png";
-const Card = () => {
+// import { useState } from "react";
+const Card = ({ cardList }) => {
+  // const [isAdded, setIsAdded] = useState([]);
   return (
-    <React.Fragment>
-      <div className="card">
-        <div className="card__inner">
-          <div className="front">
-            <div className="front__header pt-2">
-              <p>Food</p>
+    <div className="row">
+      {cardList.map((item) => {
+        return (
+          <React.Fragment key={item.id}>
+            <div className="col-md-4 py-3">
+              <div className="card" style={{ width: "18rem" }}>
+                <img className="card-img-top" src={item.img_url} alt="" />
+              </div>
+              <div className="card__details py-3">
+                <div className="first">
+                  <div className="name">{item.name}</div>
+                  {item.id === 1 ? (
+                    <React.Fragment>
+                      <div className="price__original text-muted">
+                        ${item.original_price.toFixed(2)}
+                      </div>
+                      <div className="price">
+                        ${item.final_price.toFixed(2)}
+                      </div>
+                    </React.Fragment>
+                  ) : (
+                    <div className="price">${item.final_price.toFixed(2)}</div>
+                  )}
+                </div>
+                <div className="description text-muted">{item.description}</div>
+              </div>
+              <div className="card__footer">
+                <button>Add to Cart</button>
+              </div>
             </div>
-            <div className="front__middle py-1">
-              <img src={Chip} alt="" />
-              <img src={WifiLogo} className="mx-1" id="wifi__logo" alt="" />
-            </div>
-            <div className="card__footer pt-5">
-              <p>
-                <span>corporate</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </React.Fragment>
+          </React.Fragment>
+        );
+      })}
+    </div>
   );
 };
 export default Card;
